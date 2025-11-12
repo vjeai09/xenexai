@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.06);
+}
+
+body{
+  @apply bg-gradient-to-b from-[#07080b] via-[#0b0f14] to-[#06070a] text-slate-100 antialiased;
+  min-height:100vh;
+}
+
+/* smooth in-page anchor scrolling */
+html { scroll-behavior: smooth; }
+
+/* Animated looping gradient background for hero */
+.hero-anim{
+  background: linear-gradient(90deg, rgba(14,165,233,0.12), rgba(139,92,246,0.10), rgba(6,182,212,0.12));
+  background-size: 300% 300%;
+  animation: gradient-anim 12s ease infinite;
+}
+
+/* Glass card */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+}
+
+/* subtle glow */
+.glow {
+  box-shadow: 0 6px 30px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* focus styles for accessibility */
+button:focus, input:focus, a:focus {
+  outline: 2px solid rgba(99,102,241,0.28);
+  outline-offset: 2px;
+}
+
+/* typography */
+.h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* layout helpers */
+.container {
+  max-width: 1200px;
+}
+
+/* small screens tweak */
+@media (max-width: 640px){
+  .h1 { font-size: 1.5rem }
+}

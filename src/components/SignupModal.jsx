@@ -18,14 +18,20 @@ export default function SignupModal({ open, onClose }){
       setStatus('invalid')
       return
     }
-    // Placeholder: integrate with real API or mailing list provider
-    // simulate async request
+    // Send to Formspree (client-side). Replace YOUR_FORM_ID with your Formspree form ID.
+    const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
     setStatus('loading')
-    setTimeout(() => {
-      setStatus('ok')
-      // close after short delay so user sees success
-      setTimeout(() => onClose(), 900)
-    }, 700)
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok')
+        setStatus('ok')
+        setTimeout(() => onClose(), 900)
+      })
+      .catch(() => setStatus('error'))
   }
 
   return (
@@ -64,7 +70,10 @@ export default function SignupModal({ open, onClose }){
             </form>
 
             {status === 'invalid' && <div className="mt-3 text-sm text-rose-400">Please enter a valid email.</div>}
+            {status === 'error' && <div className="mt-3 text-sm text-rose-400">Something went wrong — please try again later.</div>}
             {status === 'ok' && <div className="mt-3 text-sm text-emerald-400">Thanks — we’ll be in touch.</div>}
+
+            <div className="mt-3 text-xs text-slate-400">We’ll only use this email to send product updates. No spam.</div>
 
             <button aria-label="Close" onClick={onClose} className="absolute top-3 right-3 text-slate-400 hover:text-white">✕</button>
           </motion.div>

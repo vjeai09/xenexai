@@ -18,8 +18,8 @@ export default function SignupModal({ open, onClose }){
       setStatus('invalid')
       return
     }
-    // Send to Formspree (client-side). Replace YOUR_FORM_ID with your Formspree form ID.
-    const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+  // Send to Formspree (client-side).
+  const FORM_ENDPOINT = 'https://formspree.io/f/mrbrbbqb'
     setStatus('loading')
     fetch(FORM_ENDPOINT, {
       method: 'POST',

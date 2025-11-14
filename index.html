@@ -4,9 +4,64 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>XeneX AI — Landing</title>
+    <link rel="stylesheet" href="/src/index.css">
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="bg-black text-white">
+    <header class="py-6 px-6 flex items-center justify-between max-w-6xl mx-auto">
+      <div class="flex items-center gap-3">
+        <!-- Place your logo at /logo.png in the public folder -->
+        <img src="/logo.png" alt="XeneX AI" width="56" height="56" class="rounded" />
+        <h1 class="text-xl font-semibold">XeneX AI</h1>
+      </div>
+      <nav>
+        <a href="#explore" class="text-slate-300 hover:text-white">Explore</a>
+      </nav>
+    </header>
+
+    <main class="min-h-screen flex flex-col items-center px-6 md:px-12 py-10 max-w-6xl mx-auto">
+      <section class="w-full text-center py-12">
+        <h2 class="text-4xl md:text-5xl font-extrabold">XeneX AI — Intelligence That Accelerates You.</h2>
+        <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Empowering organizations with generative intelligence and GPU-accelerated solutions.</p>
+        <div class="mt-6 flex items-center justify-center gap-4">
+          <a href="#explore" class="px-6 py-3 rounded-md bg-slate-700 hover:bg-slate-600">Explore Platform</a>
+          <button id="open-beta" class="px-6 py-3 rounded-md bg-indigo-600 hover:bg-indigo-500">Join Beta</button>
+        </div>
+      </section>
+
+      <section id="about" class="w-full py-8">
+        <h3 class="text-2xl font-semibold">About</h3>
+        <p class="mt-3 text-slate-300 max-w-3xl">XeneX AI develops LLM-integrated business tools, RAG pipelines, and AI copilots designed to accelerate decision-making and automate complex workflows for enterprises.</p>
+      </section>
+
+      <section id="explore" class="w-full py-8">
+        <h3 class="text-2xl font-semibold">Explore</h3>
+        <p class="mt-3 text-slate-300 max-w-3xl">Developer APIs, enterprise connectors, and GPU-accelerated inference workflows. Get early access via the Join Beta button.</p>
+      </section>
+
+      <footer class="mt-20 text-sm text-slate-400 text-center w-full">© <span id="year"></span> XeneX AI — Built for speed & scale</footer>
+    </main>
+
+    <!-- Modal markup -->
+    <div id="signup-modal" class="fixed inset-0 z-50 hidden items-center justify-center">
+      <div class="absolute inset-0 bg-black/60" id="modal-backdrop"></div>
+      <div role="dialog" aria-modal="true" aria-labelledby="signup-title" class="relative w-full max-w-md p-6 glass rounded-xl">
+        <h4 id="signup-title" class="text-lg font-semibold">Join the Beta</h4>
+        <p class="text-sm text-slate-300 mt-2">Sign up to get early access and updates from XeneX AI.</p>
+
+        <form id="signup-form" class="mt-4 flex gap-2">
+          <input aria-label="Email address" id="signup-email" name="email" type="email" autoComplete="email" class="flex-1 px-3 py-2 rounded-md bg-transparent border border-white/10 text-white outline-none" placeholder="you@company.com" />
+          <button type="submit" id="signup-submit" class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold">Join</button>
+        </form>
+
+        <div id="signup-status" class="mt-3 text-sm"></div>
+
+        <div class="mt-3 text-xs text-slate-400">We’ll only use this email to send product updates. No spam.</div>
+        <button aria-label="Close" id="signup-close" class="absolute top-3 right-3 text-slate-400 hover:text-white">✕</button>
+      </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 hidden bg-emerald-600 text-white px-4 py-2 rounded">Thanks — we’ll be in touch.</div>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
